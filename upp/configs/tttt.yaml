@@ -1,0 +1,56 @@
+tttt: &tttt
+  name: tttt
+  pattern: tttt.h5
+ttt: &ttt
+  name: ttt
+  pattern: ttt.h5
+
+global_cuts:
+  train:
+    - [eventNumber, "%10<=", 7]
+  val:
+    - [eventNumber, "%10==", 8]
+  test:
+    - [eventNumber, "%10==", 9]
+
+inclusive: &inclusive
+  name: inclusive
+  cuts: []
+
+components:
+  - region:
+      <<: *inclusive
+    sample:
+      <<: *tttt
+    flavours: [tttt]
+    num_jets: 10_000
+
+  - region:
+      <<: *inclusive
+    sample:
+      <<: *ttt
+    flavours: [ttt]
+    num_jets: 10_000
+
+resampling:
+  target: tttt
+  method: countup
+  sampling_fraction: 1.0
+  variables:
+    nJets:
+      bins: [[6, 10, 4]]
+
+global:
+  batch_size: 10_000
+  num_jets_estimate: 10_000
+  base_dir: /lustre/umt3/user/metsai/analysis/run3_4top/mva/GN2/input/dev/
+  out_dir: preprocess
+  ntuple_dir: Samples
+
+variables:
+  jets:
+    inputs:
+      - nJets
+      - nBTags_DL1dv01_77
+    labels:
+      - event_BkgCategory
