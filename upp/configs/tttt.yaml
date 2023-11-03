@@ -23,14 +23,14 @@ components:
     sample:
       <<: *tttt
     flavours: [tttt]
-    num_jets: 10_000
+    num_jets: 5_000
 
   - region:
       <<: *inclusive
     sample:
       <<: *ttt
     flavours: [ttt]
-    num_jets: 10_000
+    num_jets: 5_000
 
 resampling:
   target: tttt
@@ -38,11 +38,11 @@ resampling:
   sampling_fraction: 1.0
   variables:
     nJets:
-      bins: [[6, 10, 4]]
+      bins: [[0, 100, 4]]
 
 global:
-  batch_size: 10_000
-  num_jets_estimate: 10_000
+  batch_size: 1_000
+  num_jets_estimate: 1_000
   base_dir: /lustre/umt3/user/metsai/analysis/run3_4top/mva/GN2/input/dev/
   out_dir: preprocess
   ntuple_dir: Samples

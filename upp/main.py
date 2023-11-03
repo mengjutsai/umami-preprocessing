@@ -66,7 +66,7 @@ def run_pp(args) -> None:
 
     # load config
     config = PreprocessingConfig.from_file(Path(args.config), args.split)
-
+    print("hello")
     # create virtual datasets and pdf files
     if args.prep and args.split == "train":
         create_histograms(config)

@@ -117,6 +117,7 @@ class PreprocessingConfig:
 
     @classmethod
     def from_file(cls, config_path: Path, split: Split):
+        print("ok")
         if not config_path.exists():
             raise FileNotFoundError(f"{config_path} does not exist - check your --config arg")
         with open(config_path) as file:
